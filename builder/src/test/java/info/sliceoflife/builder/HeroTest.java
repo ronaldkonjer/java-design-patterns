@@ -1,0 +1,67 @@
+package info.sliceoflife.builder;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
+import info.sliceoflife.builder.herobuilder.Builder;
+import info.sliceoflife.builder.herobuilder.Hero;
+import info.sliceoflife.builder.herobuilder.impl.Armor;
+import info.sliceoflife.builder.herobuilder.impl.HairColor;
+import info.sliceoflife.builder.herobuilder.impl.HairType;
+import info.sliceoflife.builder.herobuilder.impl.Profession;
+import info.sliceoflife.builder.herobuilder.impl.Weapon;
+
+import org.junit.Test;
+
+/**
+ * @author ronaldkonjer (ronaldkonjer@gmail.com)
+ */
+public class HeroTest {
+
+  /**
+   * Test if we get the expected exception when trying to create a hero without a profession
+   * throws Exception
+   */
+  @Test(expected = IllegalArgumentException.class)
+  public void testMissingProfession() throws Exception {
+    new Builder(null, "Sir without a job");
+  }
+
+  /**
+   * Test if we get the expected exception when trying to create a hero without a name
+   *
+   * @throws Exception
+   */
+  @Test(expected = IllegalArgumentException.class)
+  public void testMissingName() throws Exception {
+    new Builder(Profession.THIEF, null);
+
+  }
+
+  /**
+   * Test if the hero build by the builder has the correct attributes, as required
+   *
+   * @throws Exception
+   */
+  @Test
+  public void testBuildHero() throws Exception {
+    final String heroName = "Sir Lancelot";
+
+    final Hero hero = new Builder(Profession.WARRIOR, heroName).withArmor(Armor.CHAIN_MAIL)
+      .withWeapon(Weapon.SWORD)
+      .withHairType(HairType.LONG_CURLY)
+      .withHairColor(HairColor.BLOND)
+      .build();
+
+    assertNotNull(hero);
+    assertNotNull(hero.toString());
+    assertEquals(Profession.WARRIOR, hero.getProfession());
+    assertEquals(heroName, hero.getName());
+    assertEquals(Armor.CHAIN_MAIL, hero.getArmor());
+    assertEquals(Weapon.SWORD, hero.getWeapon());
+    assertEquals(HairType.LONG_CURLY, hero.getHairType());
+    assertEquals(HairColor.BLOND, hero.getHairColor());
+
+  }
+
+}
