@@ -5,3 +5,6 @@
 ***Hide the creation of the parts from the client so both aren't dependent
 ***The builder knows the specifics and nobody else does
 
+*Head first design pattern*
+P614
+

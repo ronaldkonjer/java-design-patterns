@@ -12,6 +12,9 @@
 **You can model anything you can imagine and have those objects interact through common interfaces
 **The Downfall: Things can get complicated
 
+*Head first design pattern*
+P156
+
 
 
 the factory method pattern is a creational pattern which uses factory methods to deal with the problem of creating objects without specifying the exact class of object that will be created
