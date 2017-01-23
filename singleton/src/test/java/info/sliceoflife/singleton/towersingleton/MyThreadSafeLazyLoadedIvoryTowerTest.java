@@ -1,19 +1,15 @@
 package info.sliceoflife.singleton.towersingleton;
 
-import static org.junit.Assert.*;
+/**
+ * Create a new Singleton test isntance using the given 'getInstance' method
+ *
+ * @author ronaldkonjer (ronaldkonjer@gmail.com)
+ */
 
-import org.junit.Before;
-import org.junit.Test;
+public class MyThreadSafeLazyLoadedIvoryTowerTest extends MySingletonTest<MyThreadSafeLazyLoadedIvoryTower> {
 
-
-public class MyThreadSafeLazyLoadedIvoryTowerTest {
-
-  @Before
-  public void setUp() throws Exception {}
-
-  @Test
-  public void test() {
-    fail("Not yet implemented");
+  public MyThreadSafeLazyLoadedIvoryTowerTest() {
+    super(MyThreadSafeLazyLoadedIvoryTower::getInstance);
   }
 
 }

@@ -1,19 +1,15 @@
 package info.sliceoflife.singleton.towersingleton;
 
-import static org.junit.Assert.*;
+/**
+ * Create a new Singleton test instance using the given 'getInstance' method
+ *
+ * @author ronaldkonjer (ronaldkonjer@gmail.com)
+ */
 
-import org.junit.Before;
-import org.junit.Test;
+public class MyThreadSafeDoubleCheckLockingTest extends MySingletonTest<MyThreadSafeDoubleCheckLocking> {
 
-
-public class MyThreadSafeDoubleCheckLockingTest {
-
-  @Before
-  public void setUp() throws Exception {}
-
-  @Test
-  public void test() {
-    fail("Not yet implemented");
+  public MyThreadSafeDoubleCheckLockingTest() {
+    super(MyThreadSafeDoubleCheckLocking::getInstance);
   }
 
 }

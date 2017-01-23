@@ -1,19 +1,15 @@
 package info.sliceoflife.singleton.towersingleton;
 
-import static org.junit.Assert.*;
+/**
+ * Create a new Singleton test instance using th given 'getInstance' method
+ *
+ * @author ronaldkonjer (ronaldkonjer@gmail.com)
+ */
 
-import org.junit.Before;
-import org.junit.Test;
+public class MyInitializingOnDemandHolderIdiomTest extends MySingletonTest<MyInitializingOnDemandHolderIdiom> {
 
-
-public class MyInitializingOnDemandHolderIdiomTest {
-
-  @Before
-  public void setUp() throws Exception {}
-
-  @Test
-  public void test() {
-    fail("Not yet implemented");
+  public MyInitializingOnDemandHolderIdiomTest() {
+    super(MyInitializingOnDemandHolderIdiom::getInstance);
   }
 
 }
