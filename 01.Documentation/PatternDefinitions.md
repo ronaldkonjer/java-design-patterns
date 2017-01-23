@@ -1,0 +1,96 @@
+# Java Design Patterns
+---
+## Object Oriented Principles
+
+* Encapsulate what varies
+* Favor composition over inheritence
+* Program to an interface, not implementations
+* Strive for loosely coupled designs between objects that interact
+* Classes should be open for extension but closed for modification
+* Depend on abstractions. Do not depend on concrete classes.
+
+## Object Oriented Basics
+
+* Abstraction
+* Encapsulation
+* Polymorphism
+* Inheritence.
+
+# Creational Patterns
+---
+There are two ways to parameterize a system by the classes of objects it creates.
+1. Subclass the class that creates the objects; this corresponds to using the Factory Method pattern.
+Main drawback of this approach is that is can require creating new subclas just to change the class of the product. 
+2. Use object composition, by using an object that's responsible for knowing the class of the product objects, and make it a parameter of the system.
+This is the key aspect of the Abstract Factory, Builder and Prototype patterns. All three involve creating a new factory object whose responsibility is to create product objects.
+These designs are more flexible that the ones that use the Factory Method, but they're also more complex. Often designs start out as a Factory Method and evolve towards other creational patterns.
+
+# Factory
+---
+## Bullet points
+* All factories encapsulate object creation.
+* Simple Factory, while not a bonafide design pattern, is a simple way to decouple your clients form concrete classes.
+* Abstract Factory relies on object composition: object creation is implemented in methods exposed in the factory interface.
+* All factory patterns promote loose coupling by reducing the dependency of your application on concrete classes.
+* The intent of Factory Method is to allow a class to defer instantiation to its subclasses.
+* The intent of Abstract Factory is to create families of related objects without having to depend on their concrete classes.
+* The Dependency Inversion Principle guides us to avoid dependencies on concrete types and to strive for abstraction.
+* Factories are a powerfull technique for coding to  abstractions, not concrete cases.
+
+### Abstract Factory - definition
+> Provides an interface for creating families of related or dependend objects without specifying their concrete classes.
+
+### Factory Method - definition
+> Defines an interface for creating an object, but lets subclasses decide which class to instantiate. 
+Factory Method lets a class defer instantiation to subclasses.
+
+# Builder
+---
+## Bullet points
+* Encapsulates the way a complex object is constructed.
+* Allows objects to be constructed in a multistep and varying process(as pposed to one step factories).
+* Hides the internal representation of the product from the client.
+* Product inplementations can be swapped in and out because the client only sees an abstract interface.
+* Often used for building composite structures
+* Constructing objects requires more domain knowledge of the client then when using a Factory
+
+### Builder - definition
+> Separates the construction of a complex object from it's representation so that the same construction process can create 
+different representations.
+
+# Prototype
+---
+## Bullet points
+* Hides the complexities of making new instances from the client.
+* Provides the option for the client to generate objects whose type is not known.
+* In some circumstances, copying an object can be more efficient than creating a new object.
+* Prototype should be considered when a system must create new objects of many types in a complex class hierarchy.
+* A drawback to using the Prototype is that making a copy of an object can sometimes be complicated
+
+### Prototype - definition
+> Specify the kinds of objects to create using a prototypical inheritance, and create new objects by copying this prototype.
+
+# Singleton
+---
+## Bullet Points
+* The Singelton Pattern ensures you have at most one instance of a class in your application.
+* The Singleton Pattern also provides a global access point to that instance.
+* Java's implementation of the Singleton Pattern makes use of a private constructor, a static method combined with a static variable.
+* Examine your performance and resource constraints and carefully choose an appropriate Singleton implementation for multithreated applications.(and we should consider all applications multithreaded!!)
+* Beare of the double-checked licking implementationl it is not thread-safe in versions before Java 2, version 5.
+* Be careful if you are using multiple class loaders; this could defeat the Singleton implementation and result in multiple instances.
+* If you are using a JVM earier than 1.2, you'll need to create a registry of Singletons to defeat the farbage collector.
+
+## Dealing with multithreading
+1. If performance of getInstance() is not critical to system, do not change the Synchronized getInstance() method. (Be aware that synchronizing a method decreases performance by factor 100)
+2. If application always creates and uses an instance of the Singleton, change the lazy loading Singleton into a eagerly Singleton.
+3. If performance is critical, use "double-checked locking" to reduse the use of synchronization in the getInstance(), i.o.w. only when Singleton instance not created yet THEN use synchronize. (volatile)
+
+## Consequences
+* Violates Single Responsibility Principle (SRP) by controlling their own creation and lifecycle.
+* Encourages using a global shared instance which prevents an object and resources used by this object from being deallocated.
+* Creates tightly coupled code that is difficult to test.
+* Makes it almost impossible to subclass a Singleton.
+
+### Singleton - definition
+> Ensures a class has only one instance, and provides a global point of access to it.
