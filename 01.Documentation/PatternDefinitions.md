@@ -7,14 +7,15 @@
 * Program to an interface, not implementations
 * Strive for loosely coupled designs between objects that interact
 * Classes should be open for extension but closed for modification
-* Depend on abstractions. Do not depend on concrete classes.
+* Depend on abstractions. Do not depend on concrete classes
+* Only talk to your friends
 
 ## Object Oriented Basics
 
 * Abstraction
 * Encapsulation
 * Polymorphism
-* Inheritence.
+* Inheritence
 
 # Creational Patterns
 ---
@@ -94,3 +95,82 @@ different representations.
 
 ### Singleton - definition
 > Ensures a class has only one instance, and provides a global point of access to it.
+
+### Exercise Java 8 usage documentation
+Java 8 - 5 minutes docs: https://blog.idrsolutions.com/2015/03/java-8-consumer-supplier-explained-in-5-minutes/
+
+# Structural Patterns
+---
+A lot of similarities between the structural patterns, especially in their participants and collaborations. This because they rely on the same small set of language mechanisms for structuring code and objects.
+Single and multiple inheritance for class-based patterns, Object composition for object patterns. Although the similairities, there are different intents among these patterns. Learn them to choose the right patterns.
+
+# Adapter
+---
+## Bullet Points
+* When you need to use an existing class and its interface is not the one you need, use an adapter.
+* An adapter changes an interface into one a client expects.
+* Implementing an adapter ma require little work or a great deal of work depending on the size and complexity of the target interface.
+* Two forms of the Adapter Pattern; object and class adapters. Class adapters require multiple inheritance.
+* An adapter wraps an object to change its interface.
+
+### Adapter - definition
+> Converts the interface of a class into another interface the client expects. Adapter lets classes work together that couldn't otherwise because of incompatible interfaces.
+
+# Facade
+---
+## Bullet Points
+* When you need to simplify and unify a large interface or complex set of interfaces, use a facade.
+* A facade decouples a client from a complex subsystem.
+* Implementing a facade requires that we compose the facade with its subsystem and use delegation to perform the work of the facade.
+* You can implement more than one facade for a subsystem.
+* A facade "wraps" a set of objects to simplify.
+
+### Facade - definition
+> Provides a unified interface to a set of interfaces in a subsystem. Facade defines a higher-level interface that makes the subsystem easier to use.
+
+
+# The Flyweight
+---
+
+# The Bridge
+---
+
+# Adapter VS The Bridge 
+---
+
+
+# Composite
+---
+
+# Decorator
+---
+## Bullet Points
+* Inheritance is one form of extension, but not necessarily the best way to achieve flexibility in our designs.
+* In our designs we should allow behavior to be extended without the need to modify existing code.
+* Composition and delegation can often be used to add new behaviors at runtime.
+* The Decorator Pattern provides an alternative to subclassing for extending behavior.
+* The Decorator Pattern involves a set of decorator classes that are used to wrap concrete components.
+* Decorator classes mirror the type of the components they decorate. (In fact, they are the same type as the components the decorate, either through inheritence or interface implementation.)
+* Decorators change the behavior of their components by adding new functionality before and/or after ( or even in place of ) method calls to the component.
+* You can wrap a component with any number of decorators.
+* Decorators are typically transparent to the client of the component; that is, unless the client is relying on the component's concrete type.
+* Decorators can resullt in many small objects in our design, and overuse can be complex.
+* A decorator wraps an object to add new behaviors and responsibilities.
+
+
+## Decorator - definition
+Attach additional responsibilities to an object dynamically. Decorators provide a flexible alternative to subclassing for extending functionality.
+
+# Proxy
+---
+
+# Composite VS Decorator VS Proxy
+---
+
+
+
+
+
+
+
+
