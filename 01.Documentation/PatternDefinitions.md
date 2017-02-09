@@ -9,6 +9,8 @@
 * Classes should be open for extension but closed for modification
 * Depend on abstractions. Do not depend on concrete classes
 * Only talk to your friends
+* Don't call us we call you
+* A class should have only one reason to change
 
 ## Object Oriented Basics
 
@@ -134,13 +136,48 @@ Single and multiple inheritance for class-based patterns, Object composition for
 
 # The Bridge
 ---
+## Bullet points
+* Decouples an implementation so that it is not bound permanently to an interface.
+* Abstraction and implementation can be extended independently.
+* Changes to the concrete abstraction classes don't affect the client.
+* Useful ingraphic and windowing systems that need to run over multiple platforms.
+* Useful any time you need to vary an interface and an implementation in different ways.
+* Increases complexity.
+
+## Use the pattern when:
+* you want to avoid a permanent binding between an abstraction and its implementation, This might be the case, e.g. when the implementation must be selected or switched at run-tim.
+* both the abstractions and their implementations should be extensible by subclassing. In this case, the Bridge pattern lets you combine the different abstractons and implementations and extend them independently.
+* changes in the implementation of an abstraction should have no impact on clients; that is, their code should not have to be recompiled.
+* you have a proliferation of classes. Such a class hierarchy indicates the need for splitting an object into two parts. Rumbaugh uses the term "nested generalizations" to refer to such class hierarchies.
+* you want to share an implementation among multiple objects (perhaps using reference counting), and this fact should be hidden  from the client. A simple example is Coplien's String class, in which multiple objects can share the same string representation.
+
+### Bridge - definition
+> Decouple an abstraction from its implementation so that the two can vary independenty.
 
 # Adapter VS The Bridge 
 ---
 
+# Iterator
+---
+## Bullet Points
+* An Iterator allows access to an aggregate's elements without exposing its internal structure.
+* An Iterator takes the job of iterating over an aggregate and encapsulates it in another object.
+* When using an Iterator, we relieve the aggregate of the responsibility of supporting operations for traversing its data.
+* An Iterator provides a common interface for traversing the items of an aggregate, allowing you to use polymorphism when writing code that makes use of the items of the aggregate.
+
+### Iterator - definition
+> Provide a way to access the elements of an aggregate object sequentially without exposing its underlying representation
 
 # Composite
 ---
+## Bullet Points
+* The Composite Pattern provides a structure to hold both individual objects and composites.
+* The composite Pattern allows clients to treat composites and individual objects uniformly.
+* A Composite is any object in a Composite structure. Components may be other composites or lead nodes.
+* There are many design tradeoffs in implementing Composite. You need to balance transparency and safety with your needs.
+
+### Composite - definition
+> Allows you to compose objects into tree structures to represent part-whole hierarchies. Composite lets clients treat individual objects and compositions of objects uniformly.
 
 # Decorator
 ---
@@ -158,7 +195,7 @@ Single and multiple inheritance for class-based patterns, Object composition for
 * A decorator wraps an object to add new behaviors and responsibilities.
 
 
-## Decorator - definition
+### Decorator - definition
 Attach additional responsibilities to an object dynamically. Decorators provide a flexible alternative to subclassing for extending functionality.
 
 # Proxy
