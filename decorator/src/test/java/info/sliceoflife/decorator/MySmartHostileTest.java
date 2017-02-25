@@ -1,0 +1,47 @@
+package info.sliceoflife.decorator;
+
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.spy;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoMoreInteractions;
+
+import info.sliceoflife.decorator.component.MyHostile;
+import info.sliceoflife.decorator.component.impl.MyTroll;
+import info.sliceoflife.decorator.decorator.MySmartHostile;
+
+import org.junit.Test;
+
+/**
+ * MySmartHostile Test
+ *
+ * @author ronaldkonjer (ronaldkonjer@gmail.com)
+ */
+public class MySmartHostileTest {
+
+  /**
+   * Test the decorator MySmartHostile
+   *
+   * @throws Exception exception being thrown
+   */
+  @Test
+  public void testMySmartHostile() throws Exception {
+    // Create a normal troll first, but make sure we can spy on it later on.
+    final MyHostile simpleTroll = spy(new MyTroll());
+
+    // Now we want to deorate the troll to make it smarter ...
+    final MyHostile smartTroll = new MySmartHostile(simpleTroll);
+    assertEquals(30, smartTroll.getAttackPower());
+    verify(simpleTroll, times(1)).getAttackPower();
+
+    // Check if the smart troll actions are delegated to the decorated troll
+    smartTroll.attack();
+    verify(simpleTroll, times(1)).attack();
+
+    smartTroll.fleeBattle();
+    verify(simpleTroll, times(1)).fleeBattle();
+    verifyNoMoreInteractions(simpleTroll);
+
+  }
+
+}

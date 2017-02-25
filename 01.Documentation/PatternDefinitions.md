@@ -40,10 +40,10 @@ These designs are more flexible that the ones that use the Factory Method, but t
 * The Dependency Inversion Principle guides us to avoid dependencies on concrete types and to strive for abstraction.
 * Factories are a powerfull technique for coding to  abstractions, not concrete cases.
 
-### Abstract Factory - definition
+### Abstract Factory - definition (Kit)
 > Provides an interface for creating families of related or dependend objects without specifying their concrete classes.
 
-### Factory Method - definition
+### Factory Method - definition (Virtual constructor)
 > Defines an interface for creating an object, but lets subclasses decide which class to instantiate. 
 Factory Method lets a class defer instantiation to subclasses.
 
@@ -115,7 +115,7 @@ Single and multiple inheritance for class-based patterns, Object composition for
 * Two forms of the Adapter Pattern; object and class adapters. Class adapters require multiple inheritance.
 * An adapter wraps an object to change its interface.
 
-### Adapter - definition
+### Adapter - definition (Wrapper)
 > Converts the interface of a class into another interface the client expects. Adapter lets classes work together that couldn't otherwise because of incompatible interfaces.
 
 # Facade
@@ -133,6 +133,20 @@ Single and multiple inheritance for class-based patterns, Object composition for
 
 # The Flyweight
 ---
+## Bullet Points
+* Use of the Flyweight pattern depends heavily on how and where it is used. Use the Flyweight pattern only when the following are true:
+	* an application uses a large number of objects.
+	* storage costs are high because of the sheer quantity of objects.
+	* most object state can be made extrinsic.
+	* many groups of objects may be replaced b relatively few shared objects once extrinsic state is removed.
+	* the application doesn't depend on object identity. Since Flyweight objects may be shared, identity tests will return true for conceptually distinct objects.
+* Reduces the number of object instances at runtime, saving memory.
+* Centralizes state for many "virtual" objects into a single location.
+* The Flyweight is used when a class has many instances, and they can all be controlled indentically.
+* A drawback of the Flyweight Pattern is that once you've implemented it, single, logical instances of the class will not be able to behave independently form the other instances.
+
+### Flyweight - definition
+> Use the Flyweight Pattern when one instance of a class can be used to provide many "virtual instances". It uses sharing to support large number of fine-grained objects efficiently.
 
 # The Bridge
 ---
@@ -151,7 +165,7 @@ Single and multiple inheritance for class-based patterns, Object composition for
 * you have a proliferation of classes. Such a class hierarchy indicates the need for splitting an object into two parts. Rumbaugh uses the term "nested generalizations" to refer to such class hierarchies.
 * you want to share an implementation among multiple objects (perhaps using reference counting), and this fact should be hidden  from the client. A simple example is Coplien's String class, in which multiple objects can share the same string representation.
 
-### Bridge - definition
+### Bridge - definition (Handle/Body)
 > Decouple an abstraction from its implementation so that the two can vary independenty.
 
 # Adapter VS The Bridge 
@@ -193,13 +207,23 @@ Single and multiple inheritance for class-based patterns, Object composition for
 * Decorators are typically transparent to the client of the component; that is, unless the client is relying on the component's concrete type.
 * Decorators can resullt in many small objects in our design, and overuse can be complex.
 * A decorator wraps an object to add new behaviors and responsibilities.
+* To add responsibilities to individual objects dynamically and transparently, that is, without affecting other objects.
+* For responsibilities that can be withdrawn
+* When extension by subclassing is impractical. Sometimes a large number of independent extensions are possible and 
+would produce an explosion of subclasses to support every combination. Or a class definition may be hidden or 
+otherwise unavailable for subclassing
 
 
-### Decorator - definition
-Attach additional responsibilities to an object dynamically. Decorators provide a flexible alternative to subclassing for extending functionality.
+### Decorator - definition (wrapper)
+> Attach additional responsibilities to an object dynamically. Decorators provide a flexible alternative to subclassing for extending functionality.
 
 # Proxy
 ---
+## Bullet Points
+*
+
+### Proxy - definition (Surrogate)
+> Provide a surrogate or placeholder for another object to control access to it.
 
 # Composite VS Decorator VS Proxy
 ---
