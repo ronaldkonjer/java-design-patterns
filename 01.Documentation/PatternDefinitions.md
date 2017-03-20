@@ -340,9 +340,6 @@ Single and multiple inheritance for class-based patterns, Object composition for
 ### Bridge - definition (Handle/Body)
 > Decouple an abstraction from its implementation so that the two can vary independenty.
 
-# Adapter VS The Bridge 
----
-
 # Composite
 ---
 ## Bullet Points
@@ -420,9 +417,45 @@ otherwise unavailable for subclassing
 ### Proxy - definition (Surrogate)
 > Provide a surrogate or placeholder for another object to control access to it.
 
+# Discussion of Structural Patterns
+---
+There are similairities between the structural patterns, especially in their participants and collaborations. This is because the structural patterns rely on the same small set of language mechanics for structuring code and objects.
+single and multiple inheritance for class-based patterns, and object composition for object patterns. But although the similairities, there are different intents for which the patterns are used.
+The differences between the somewhat similar patterns with other intents are significant because they capture solutions to specific recurring problems in object-oriented design. Although patterns can be combined ofcourse.
+E.g. Think about a Proxy-Decorator that adds functionality to a proxy, or a Decorator-Proxy that embellishes a remote object.
+
+# Adapter VS The Bridge 
+---
+* Both promote flexibility by providing a level of indirection to another object. 
+* Both involve forwarding requests to this object from an interface other than its own.
+* Adapter focuses on resolving incompatibilities between two existing interfaces, it doesn't focus on how those interfaces are implemented, nor does it consider how they might evolve independently.
+* Adapter provides a way of making two independently designed classes work together without reimplementing one or the other.
+* Adapter becomes necessary when you discover that two incompatible classes should work together, generally to avoid replication of code. The coupling is unforeseen in earlier stages of the lifecycle.
+* Adapter makes things work after they are designed.
+* A Facade is not an Adapter because; although it is an interface to a set of other objects; it defines a 'new' interface, whereas the adapter reuses an old interface. Remember that an Adapter makes two existing interfaces work togetheras opposed to defininf an entirely new one.
+* Bridge bridges an abstraction and its (potentially numerous) implementations. It provides a stable interface to clients even as it lets you vary the classes that impement it.
+* Bridge accomodates new implementations as the system evolves.
+* Bridge is used when upfront the knowlegde is available that an abstraction must have several implementations, and both may evolve independently. 
+* Bridge makes things work before they are designed.
+
+
 # Composite VS Decorator VS Proxy
 ---
-
+* Composite and Decorator have similar structure diagrams, reflexting the fact that both rely on recursive composition to organize an open-ended number of objects. This similarity ends at recursive composition because of different intent.
+* Composite and Decorator intents are distinct but complementaty, because of this both are oftern used in concert. Both lead to design in which you can build applications just by plugging objects together without defining any new classes.
+There will be an abstract class with some subclasses that are Composite, some that are Decorators and some that implement the fundamental building blocks of the system. In this case both patterns will have a common interface.
+* Decorator let you add responsibilities to objects without subclassing. It avoids the explosion of subclasses that can arise from trying to cover every combination of responsibilities statically.
+* Composite focuses on structuring classes so that many related objects can be treated uniformly, and multiple objects can be treated as one. Its focus in not on embellishment but on representation.
+* Decorator sees the Composite as a ConcreteComponent.
+* Composite sees the Decorator as a Leaf.
+* Decorator and Proxy also have a similar structure. Both describe how to provide a level of indirection to an object, and the implementation of both keep a reference to another object to which they forward requests. But again their intent is different.
+* Decorator and Proxy both compose an object and provide an identical interface to its clients.
+* Proxy is not concerned with attaching or detaching properties dynamically, and it's not designed for recursive composition.
+* Proxy is intended to provide a stand-in for a subject whin it's inconcenient or undesirable to access the subject direcly because, e.g. it lives on a remote machine, has restricted access, or is persistent.
+* Proxy provides(or refuses) access to the subject that defines the key functionality itself.
+* Decorator is concerned with attaching or detaching properties dynamically, and it's designed for recursice composition.
+* Decorator pattern, makes the component provide only part of the functionality, and one or more decorators funrnish the rest.
+* Decorator addresses the situation where an object's total functionality can't be determined at compile time, at least not conveniently.
 
 # Behavioral Patterns
 ---
@@ -443,10 +476,24 @@ otherwise unavailable for subclassing
 * [Strategy](#strategy)
 * [State](#state)
 * [Template Method](#template-method)
+* [Interpreter] (#interpreter)
+
+Behavioral patterns are concerned with algorithms and the assignment of responsibilities between objects. They describe not just patterns of objects or classes but also the patterns of communication between them.
+Behavioral patterns characterize complex control flow that's difficult to follow at run-time. They shift the focus awau from flow of cntrol to let you concentrate just on the way objects are interconnected.
 
 # Chain of Responsibility
 ---
 ## Bullet Points
+* Use the Chain of Responsibility when:
+	* more than one object may handle a request, and the handler isn't known a priori. The handler should be ascertained automatically.
+	* you want to issue a request to one of several objects without specifying the receiver explicitly.
+	* the set of objects that can handle a request should be specified dynamically.
+* Decouples the sender of the request and its receivers.
+* Simplifies your objects because it doesn't have to know the chain's structure and keep direct references to its members.
+* Allows you to add or remove responsibilities dynamically by changing the members or order of the chain.
+* Commonly used in windows systems to handle events like mouse clicks and keyboard events.
+* Execution of the request isn't guaranteed; it may fall off the end of the chain if no object handles it.(this can be an advantage or disadvantage)
+* Can be hard to observe the runtime characteristics and debug.
 
 ### Real world example
 > For example, you have three payment methods (`A`, `B` and `C`) setup in your account; each having a different amount in it. `A` has 100 USD, `B` has 300 USD and `C` having 1000 USD and the preference for payments is chosen as `A` then `B` then `C`. You try to purchase something that is worth 210 USD. Using Chain of Responsibility, first of all account `A` will be checked if it can make the purchase, if yes purchase will be made and the chain will be broken. If not, request will move forward to account `B` checking for amount if yes chain will be broken otherwise the request will keep forwarding till it finds the suitable handler. Here `A`, `B` and `C` are links of the chain and the whole phenomenon is Chain of Responsibility.
@@ -458,10 +505,34 @@ otherwise unavailable for subclassing
 > In object-oriented design, the chain-of-responsibility pattern is a design pattern consisting of a source of command objects and a series of processing objects. Each processing object contains logic that defines the types of command objects that it can handle; the rest are passed to the next processing object in the chain.
 
 ### Chain of Responsibility - definition
+Avoid coupling the sender of a request to its receiver by giving more then one object a chance to handle the request.
+Chain the receiving objects and pass the request along the chain until an object handles it.
+Use the Chain of Responsibility Pattern when you want to give more than one object a chance to handle a request.
 
 # Command
 ---
 ## Bullet Points
+* Use the Command Pattern when you want to:
+	* Parameterize objects by an antion to perform. You can express such parameterization in a procedural language with a callback function,
+	that is, a function that's registered somewhere to be called at a later point. Commands are an object-oriented replacemant for callbacks.
+	* Specify queue, and execute requests at different times. A Command object can have a lifetime independent of the original request.
+	If the receiver of a request can be represented in an address space-independent way, you can transfer a command object for the request to a different
+	process and fulfill the request there.
+	* Support undo. The Command's execute operation can store state for reversing its effects in the command itself.
+	The Command interface must have an added Unexecute operation that reverses the effects of a previous call to execute. Executed commands are stored in a history list.
+	Unlimited-level undo and redo is archieved by traversing this list backwards and forwards calling unexecute and execute, respectively.
+	* Support logging changes so that they can be reapplied in case of a system crash. By augmenting the Command interface with load and store operations, you can keep a persistent log of changes.
+	Recovering from a crash involves reloading logged commands from disk and re-executing them with the execute operation.
+	* Structure a system around high-level operations build on primitive operations. Such a structure is common in informations systems that support transactions.
+	A transaction encapsulates a set of changes to data. The Command pattern offers a way to model transactions. Commands have a common interface, letting you invoke all transactions the same way.
+	The pattern also makes it easy to extend the system with new transactions.
+* The Command Pattern decouples an object, making a request from the one that knows how to perform it.
+* A Command Object is at the center of this decoupling and encapsulates a receiver with an action(or set of actions).
+* An Invoker makes a request of a Command object by calling its execute() method, which invokes those actions on the receiver.
+* Commands may support undo by implementing an undo method that restores the object to its previous state before the execute() method was last called.
+* Macro Commands are a simple extnsion of Command that allow multiple commands to be invoked. Likewise, Macro Commands can easily support undo().
+* In practice, it is not uncommon for "smart" Commands objects to implement the request themselves rather then delegating to a receiver.
+* Commands may also be used to implement logging and transactional systems.
 
 ### Real world example
 > A generic example would be you ordering a food at restaurant. You (i.e. `Client`) ask the waiter (i.e. `Invoker`) to bring some food (i.e. `Command`) and waiter simply forwards the request to Chef (i.e. `Receiver`) who has the knowledge of what and how to cook. 
@@ -473,8 +544,8 @@ otherwise unavailable for subclassing
 ### Wikipedia says
 > In object-oriented programming, the command pattern is a behavioral design pattern in which an object is used to encapsulate all information needed to perform an action or trigger an event at a later time. This information includes the method name, the object that owns the method and values for the method parameters.
 
-
 ### Command - definition
+> Encapsulates a request as an object, thereby letting you parameterize clients with different requests, queue or log requests, and support undoable operations.
 
 # Iterator
 ---
@@ -609,6 +680,20 @@ Usually useful when you need to provide some sort of undo functionality.
 > In software engineering, the template method pattern is a behavioral design pattern that defines the program skeleton of an algorithm in an operation, deferring some steps to subclasses. It lets one redefine certain steps of an algorithm without changing the algorithm's structure.
 
 ### Template Method - definition
+
+# Interpreter
+---
+## Bullet Points
+* Use the Interpreter Pattern when there is a language to interpret, and you can represent statements in the language as abstract syntax trees. The Interpreter Pattern works best when:
+	* The grammar is simple. For coplex grammars, the class hierarchy for the grammar becomes large and unmanageble
+	Tools such as parser generators are a better alternative in such cases. they can interpret expressions without building abstract syntax trees, which can save space and possible time.
+	*	Efficiency is not a critical concern. The most efficient interpreters are usually not implemented by interpreting
+	parse trees directly but by first translating them into another form. For example, regular expressions are often transformed into state machines.
+	But even then, the translator can be implemented by the Interpreter pattern, so the pattern is still applicable.
+
+## Interpreter Method - definition
+> Given a language, define a representation for its grammar along with an interpreter that uses the representation to interpret sentences in the language.
+
 
 
 
