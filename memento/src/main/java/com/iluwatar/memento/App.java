@@ -1,17 +1,14 @@
 /**
  * The MIT License
  * Copyright (c) 2014 Ilkka Seppälä
- *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- *
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -25,7 +22,6 @@ package com.iluwatar.memento;
 import java.util.Stack;
 
 /**
- * 
  * The Memento pattern is a software design pattern that provides the ability to restore an object
  * to its previous state (undo via rollback).
  * <p>
@@ -41,17 +37,16 @@ import java.util.Stack;
  * In this example the object ({@link Star}) gives out a "memento" ({@link StarMemento}) that
  * contains the state of the object. Later on the memento can be set back to the object restoring
  * the state.
- * 
  */
 public class App {
 
   /**
    * Program entry point
    */
-  public static void main(String[] args) {
-    Stack<StarMemento> states = new Stack<>();
+  public static void main(final String[] args) {
+    final Stack<StarMemento> states = new Stack<>();
 
-    Star star = new Star(StarType.SUN, 10000000, 500000);
+    final Star star = new Star(StarType.SUN, 10000000, 500000);
     System.out.println(star);
     states.add(star.getMemento());
     star.timePasses();

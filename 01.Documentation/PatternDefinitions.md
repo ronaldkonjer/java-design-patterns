@@ -571,6 +571,15 @@ Use the Chain of Responsibility Pattern when you want to give more than one obje
 # Mediator
 ---
 ## Bullet Points
+* Use the Mediator pattern when:
+	* A set of objects communicate in well-defined but complex ways. The resulting interdependencies are unstructured and difficult to understand.
+	* Reusing an object is difficult because it refers to and communicates with many other objects.
+	* A behavior that's distributed between several classes should be customizable without a lot of subclassing.
+* Increases the reusability of the objects supported by the Mediator by decoupling them from the system. 
+* Simplifies maintenance of the system by centralizing control logic.
+* Simplifies and reduces the variety of messages sent between objects in the system.
+* The Mediator is commonly used to coordinate related GUI components.
+* A drawback of the Mediator Pattern is that without proper design, the Mediator object itself can become overly complex.
 
 ### Real world example
 > A general example would be when you talk to someone on your mobile phone, there is a network provider sitting between you and them and your conversation goes through it instead of being directly sent. In this case network provider is mediator. 
@@ -582,10 +591,21 @@ Use the Chain of Responsibility Pattern when you want to give more than one obje
 > In software engineering, the mediator pattern defines an object that encapsulates how a set of objects interact. This pattern is considered to be a behavioral pattern due to the way it can alter the program's running behavior.
 
 ### Mediator - definition
+> Define an object that encapsulates how a set of objects interact. Mediator promotes loose coupling by keeping objects from referring to each other explicitly, and it lets you vary their interaction independently.
+Use the Mediator Pattern to certralize complex communications and control between related objects.
 
 # Memento
 ---
 ## Bullet Points
+* Use the Momento Pattern when:
+	* A snapshot of an object's state must be saved so that it can be restored to that state later, and
+	* A direct interface to obtaining the state would expose implementation details and break the object's encapsulation.
+* Keeping the saved state external from the key object helps to maintain cohesion.
+* Keeps the key object's data encapsulated.
+* Provides easy-to-implement recovery capability.
+* The Momento is used to save state.
+* A drawback to using Memento is that saving and restoring state can be time consuming.
+* In Java systems, consider using Serialization to save a system's state.
 
 ### Real world example
 > Take the example of calculator (i.e. originator), where whenever you perform some calculation the last calculation is saved in memory (i.e. memento) so that you can get back to it and maybe get it restored using some action buttons (i.e. caretaker). 
@@ -599,6 +619,8 @@ Use the Chain of Responsibility Pattern when you want to give more than one obje
 Usually useful when you need to provide some sort of undo functionality.
 
 ### Memento - definition
+> Without violating encapsulation, capture and externalize an object's internal state so that the object can be restored to this state later.
+Use the Momento Pattern when you need to be able to return an object to one of its previous states; for instance, if your user requests an "undo"
 
 # Observer
 ---
