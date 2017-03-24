@@ -476,7 +476,7 @@ There will be an abstract class with some subclasses that are Composite, some th
 * [Strategy](#strategy)
 * [State](#state)
 * [Template Method](#template-method)
-* [Interpreter] (#interpreter)
+* [Interpreter](#interpreter)
 
 Behavioral patterns are concerned with algorithms and the assignment of responsibilities between objects. They describe not just patterns of objects or classes but also the patterns of communication between them.
 Behavioral patterns characterize complex control flow that's difficult to follow at run-time. They shift the focus awau from flow of cntrol to let you concentrate just on the way objects are interconnected.
@@ -544,7 +544,7 @@ Use the Chain of Responsibility Pattern when you want to give more than one obje
 ### Wikipedia says
 > In object-oriented programming, the command pattern is a behavioral design pattern in which an object is used to encapsulate all information needed to perform an action or trigger an event at a later time. This information includes the method name, the object that owns the method and values for the method parameters.
 
-### Command - definition
+### Command - definition (Action, Transaction)
 > Encapsulates a request as an object, thereby letting you parameterize clients with different requests, queue or log requests, and support undoable operations.
 
 # Iterator
@@ -564,7 +564,7 @@ Use the Chain of Responsibility Pattern when you want to give more than one obje
 ### Wikipedia says
 > In object-oriented programming, the iterator pattern is a design pattern in which an iterator is used to traverse a container and access the container's elements. The iterator pattern decouples algorithms from containers; in some cases, algorithms are necessarily container-specific and thus cannot be decoupled.
 
-### Iterator - definition
+### Iterator - definition (Cursor)
 > Provide a way to access the elements of an aggregate object sequentially without exposing its underlying representation
 
 
@@ -597,13 +597,13 @@ Use the Mediator Pattern to certralize complex communications and control betwee
 # Memento
 ---
 ## Bullet Points
-* Use the Momento Pattern when:
+* Use the Memento Pattern when:
 	* A snapshot of an object's state must be saved so that it can be restored to that state later, and
 	* A direct interface to obtaining the state would expose implementation details and break the object's encapsulation.
 * Keeping the saved state external from the key object helps to maintain cohesion.
 * Keeps the key object's data encapsulated.
 * Provides easy-to-implement recovery capability.
-* The Momento is used to save state.
+* The Memento is used to save state.
 * A drawback to using Memento is that saving and restoring state can be time consuming.
 * In Java systems, consider using Serialization to save a system's state.
 
@@ -618,13 +618,27 @@ Use the Mediator Pattern to certralize complex communications and control betwee
 
 Usually useful when you need to provide some sort of undo functionality.
 
-### Memento - definition
+### Memento - definition (Token)
 > Without violating encapsulation, capture and externalize an object's internal state so that the object can be restored to this state later.
-Use the Momento Pattern when you need to be able to return an object to one of its previous states; for instance, if your user requests an "undo"
+Use the Memento Pattern when you need to be able to return an object to one of its previous states; for instance, if your user requests an "undo"
 
 # Observer
 ---
 ## Bullet Points
+* Use the Observer Pattern in any of the following situations:
+	* When an abstraction has two aspects, onde dependent on the other. Encapsulating these aspects in separate objects lets you vary and reuse them independently.
+	* When a change to one object requires changing others, and you don't know how many objects need to be changed.
+	* When an object should be able to notify other objects without making assumptions about who these objects are. In other words, you don't wnat these objects tightly coupled.
+* The Observer Pattern defines a one-to-many relationship between objects.
+* Subjects, or as we also know them Observables, update Observers using a common interface.
+* You can push or pull data from the Observable when using the pattern (pull is considered more "correct").
+* Don't depend on a specific order of notification for our Observers.
+* Java has several implementations of the Observer Pattern, including the general purpose java.util.Observable.
+* Watch out for issues with java.util.Observable implementation (not an interface, no composition over inheritance)
+* Don't be afraid to create your own Observable implementation using an interface for example when needed.
+* Swing makes heavy use of the Observer Pattern, as so do MVC frameworks.
+* You'll also find the pattern in many other places, including JavaBeans and RMI.
+
 
 ### Real world example
 > A good example would be the job seekers where they subscribe to some job posting site and they are notified whenever there is a matching job opportunity.   
@@ -635,7 +649,8 @@ Use the Momento Pattern when you need to be able to return an object to one of i
 ### Wikipedia says
 > The observer pattern is a software design pattern in which an object, called the subject, maintains a list of its dependents, called observers, and notifies them automatically of any state changes, usually by calling one of their methods.
 
-### Observer - definition
+### Observer - definition (Dependents, Publish-Subscribe)
+> Define a one-to-many dependency between objects so that when one object changes state, all its dependents are notified and updated automatically.
 
 # Visitor
 ---
@@ -667,7 +682,7 @@ Use the Momento Pattern when you need to be able to return an object to one of i
  
 ### Strategy - definition 
 
-#State
+# State
 ---
 ## Bullet Points
 
