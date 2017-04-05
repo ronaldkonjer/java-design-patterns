@@ -685,6 +685,21 @@ Use the Memento Pattern when you need to be able to return an object to one of i
 # State
 ---
 ## Bullet Points
+* Use the State Pattern in either of the following cases:
+	* An object's behavior depends on its state, and it must change its behavior at run-time depending on that state;
+	* Operations have large, multipart conditional statements that depend on the object's state. This state is usually represented by one or more enumerated constants.
+	Often, several operations will contain this same conditional structure. The State Pattern puts each branch of the conditional in a separate class.
+	This lets you treat the objects's state as an object in its own right that can vary independently from other objects.
+* The State Pattern allows an object to have many differnt behaviors that are based on its internal state.
+* Unlike a procedural state machine, the State Pattern represents state as a full-blown class.
+* The Context gets its behavior by delegating to the current state object it is composed with.
+* By encapsulating each state into a class, we localize any changes that wll need to be made.
+* The State and Strategy Patterns have the same class diagram, but they differ in intent.
+* Strategy Pattern typically configures Context classes with a behavior or algorithm.
+* State Pattern allows a Context to change its behavior as the state of the Context changes.
+* State transitions can be controlled by the State classes or by the Context classes.
+* Using the State Pattern will typically result in a greater number of classes in your design.
+* State classes may be shared among Context instances.
 
 ### Real world example
 > Imagine you are using some drawing application, you choose the paint brush to draw. Now the brush changes its behavior based on the selected color i.e. if you have chosen red color it will draw in red, if blue then it will be in blue etc.  
@@ -696,7 +711,8 @@ Use the Memento Pattern when you need to be able to return an object to one of i
 > The state pattern is a behavioral software design pattern that implements a state machine in an object-oriented way. With the state pattern, a state machine is implemented by implementing each individual state as a derived class of the state pattern interface, and implementing state transitions by invoking methods defined by the pattern's superclass.
 > The state pattern can be interpreted as a strategy pattern which is able to switch the current strategy through invocations of methods defined in the pattern's interface.
 
-### State - definition
+### State - definition (Objects for states)
+> Allow an object to alter its behavior when its internal state changes. The object will appear to change its class.
 
 # Template Method
 ---
