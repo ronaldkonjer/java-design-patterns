@@ -1,17 +1,14 @@
 /**
  * The MIT License
  * Copyright (c) 2014 Ilkka Seppälä
- *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- *
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -21,6 +18,8 @@
  * THE SOFTWARE.
  */
 package com.iluwatar.templatemethod;
+
+import info.sliceoflife.templatemethod.template.impl.MyHitAndRunMethod;
 
 /**
  * Date: 12/30/15 - 18:12 PM
@@ -38,8 +37,7 @@ public class HitAndRunMethodTest extends StealingMethodTest<HitAndRunMethod> {
         "old goblin woman",
         "The target has been chosen as old goblin woman.",
         "Approach the old goblin woman from behind.",
-        "Grab the handbag and run away fast!"
-    );
+        "Grab the handbag and run away fast!");
   }
 
 }

@@ -27,7 +27,7 @@ Be Careful
 * Classes should be open for extension but closed for modification
 * Depend on abstractions. Do not depend on concrete classes
 * Only talk to your friends
-* Don't call us we call you
+* Don't call us we call you (Hollywood principle)
 * A class should have only one reason to change
 
 ## Object Oriented Basics
@@ -723,6 +723,23 @@ Use the Memento Pattern when you need to be able to return an object to one of i
 # Template Method
 ---
 ## Bullet Points
+* The Template Method pattern should be used:
+	* To implement the invariant parts of an algorithm once and leave it up to subclasses to implement the behavior that can vary.
+	* When common behavior among subclasses should be factored and localized in a common class to avoid code duplication. This is good exampe
+	of "refactoring to generalize" as described by Opdyke and Johnson. You first identify the differences in the existing code and then separate 
+	the differences into new operations. Finally, you replace the differing code with a template method that calls one of these new operations.
+	* To control subclasses extensions. You can defina a template method that calls "hook" operations at specific points, thereby permitting
+	extensions only at those points.
+* A "Template Method" defines the steps of an algoritm deferring to subclasses dor the implementation of those steps.
+* The Template Method Pattern gives us an important technique for code reuse.
+* The Template Method's abstract class may define concrete methods, abstract methods and hooks.
+* Abstract methods MUST be implemented by subclasses.
+* Hooks May be implemented by subclasses. Hooks are methods that do nothing or default behavior in the abstract class but may be overridden in the subclass.
+* To prevent subclasses form changing the algorithm in the template method, declare the template method as final.
+* The Hollywood Principle guides us to put decision-making in high-level modules that can decide how and when to call low level modules. (prevents dependency rot)
+* You'll seel lots of uses of the Template Method Pattern in real world code, but don't expect it all (like any pattern) to be designed "by the book".
+* The Strategy and Template Method Patterns both encapsulate algorithms, one by inheritance(Template Method) and one by composition (Strategy).
+* The Factory Method is a specialization of the Template Method.
 
 ### Real world example
 > Suppose we are getting some house built. The steps for building might look like 
@@ -739,6 +756,7 @@ Use the Memento Pattern when you need to be able to return an object to one of i
 > In software engineering, the template method pattern is a behavioral design pattern that defines the program skeleton of an algorithm in an operation, deferring some steps to subclasses. It lets one redefine certain steps of an algorithm without changing the algorithm's structure.
 
 ### Template Method - definition
+> Define the skeleton of an algorithm in an operation deferring some steps to subclasses. Template Method lets subclasses redefine certain steps of an algorithm withou changing the algorithm's structure.
 
 # Interpreter
 ---
