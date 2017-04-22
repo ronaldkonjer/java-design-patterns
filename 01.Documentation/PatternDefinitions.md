@@ -670,6 +670,11 @@ Use the Memento Pattern when you need to be able to return an object to one of i
 # Strategy
 ---
 ## Bullet Points
+* Use the Strategy Pattern when:
+	* Many related classes differ only in their behavior. Strategies provide a way to configure a class either one of many behaviors.
+	* You need different variants of an algorithm. for example, you might define algorithms reflecting different space/time trade-offs. Strategies can be used when these variants are implemented as a class hierarchy of algorithms.
+	* An algorithm uses data thet clients shouldn't know about. Use the Strategy Pattern to avoid exposing compex, algorithm-specific data structures.
+	* A class defines many behaviors, and these appear as multiple conditional statements in its operations. Instead of many conditionals, move related condirional branches into their own Strategy class.
 
 ### Real world example
 > Consider the example of sorting, we implemented bubble sort but the data started to grow and bubble sort started getting very slow. In order to tackle this we implemented Quick sort. But now although the quick sort algorithm was doing better for large datasets, it was very slow for smaller datasets. In order to handle this we implemented a strategy where for small datasets, bubble sort will be used and for larger, quick sort.
@@ -680,7 +685,8 @@ Use the Memento Pattern when you need to be able to return an object to one of i
 ### Wikipedia says
 > In computer programming, the strategy pattern (also known as the policy pattern) is a behavioural software design pattern that enables an algorithm's behavior to be selected at runtime.
  
-### Strategy - definition 
+### Strategy - definition (Policy)
+> Defines a familiy of algorithms, encapsulate each one, and make them interchangeable. Strategy lets the algorithm vary independently from clients that use it.
 
 # State
 ---
