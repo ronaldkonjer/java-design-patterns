@@ -38,6 +38,7 @@ public class MyApp {
     final MyCaptain captain = new MyCaptain(new MyBattleFishingBoat());
     captain.move();
     captain.fire();
+    captain.move();
   }
 
 }
