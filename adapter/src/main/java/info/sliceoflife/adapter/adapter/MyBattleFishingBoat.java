@@ -24,7 +24,6 @@ package info.sliceoflife.adapter.adapter;
 
 import info.sliceoflife.adapter.adaptee.MyFishingBoat;
 import info.sliceoflife.adapter.client.MyCaptain;
-import info.sliceoflife.adapter.target.MyBattleShip;
 
 /**
  * Adapter class. Adapt the interface of the device ({@link MyFishingBoat}) into

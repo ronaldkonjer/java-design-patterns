@@ -28,7 +28,7 @@ import static org.mockito.Mockito.verify;
 import info.sliceoflife.adapter.adaptee.MyFishingBoat;
 import info.sliceoflife.adapter.adapter.MyBattleFishingBoat;
 import info.sliceoflife.adapter.client.MyCaptain;
-import info.sliceoflife.adapter.target.MyBattleShip;
+import info.sliceoflife.adapter.adapter.MyBattleShip;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -20,36 +20,17 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package info.sliceoflife.chain.handler;
+package info.sliceoflife.adapter.adapter;
 
 /**
- * MyRequestHandler
+ * The interface expected by the client.<br>
+ * A Battleship can fire and move.
  *
- * @author ronaldkonjer (ronaldkonjer@gmail.com)
  */
+public interface MyBattleShip {
 
-public abstract class MyRequestHandler {
+  void fire();
 
-  private final MyRequestHandler next;
-
-  public MyRequestHandler(final MyRequestHandler next) {
-    this.next = next;
-  }
-
-  /**
-   * Request handler
-   */
-  public void handleRequest(final MyRequest request) {
-    if (next != null) {
-      next.handleRequest(request);
-    }
-  }
-
-  protected void printHandling(final MyRequest request) {
-    System.out.println(this + " handling request \"" + request + "\"");
-  }
-
-  @Override
-  public abstract String toString();
+  void move();
 
 }

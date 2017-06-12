@@ -25,7 +25,7 @@
  */
 package info.sliceoflife.adapter.client;
 
-import info.sliceoflife.adapter.target.MyBattleShip;
+import info.sliceoflife.adapter.adapter.MyBattleShip;
 
 /**
  * The captain uses {@link MyBattleShip} to fight. <br>

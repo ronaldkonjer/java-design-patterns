@@ -32,6 +32,7 @@ import info.sliceoflife.factory.method.product.impl.MyWeaponType;
 
 public interface MyWeapon {
 
+
   MyWeaponType getWeaponType();
 
 }
